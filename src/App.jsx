@@ -8,9 +8,10 @@ import logoImg from "./assets/logo.png";
 import { sortPlacesByDistance } from "./loc.js";
 
 const storedIds = JSON.parse(localStorage.getItem("pickedPlaces") || "[]");
-    const storedPlaces = storedIds.map((id) =>
-      AVAILABLE_PLACES.find((place) => place.id === id)
-    );
+const storedPlaces = storedIds.map((id) =>
+  AVAILABLE_PLACES.find((place) => place.id === id)
+);
+
 function App() {
   const modal = useRef();
   const selectedPlace = useRef();
@@ -18,11 +19,8 @@ function App() {
   const [availablePlaces, setAvailablePlaces] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
-      
       const sortedPlaces = sortPlacesByDistance(
         AVAILABLE_PLACES,
         position.coords.latitude,
@@ -33,7 +31,7 @@ function App() {
   }, []);
 
   function handleStartRemovePlace(id) {
-   setModalIsOpen(true);
+    setModalIsOpen(true);
     selectedPlace.current = id;
   }
 
@@ -50,18 +48,11 @@ function App() {
 
       return [place, ...prevPickedPlaces];
     });
-    const storedIds=JSON.parse(localStorage.getItem("pickedPlaces")||"[]");
-    if(storedIds.includes(id)){
+    const storedIds = JSON.parse(localStorage.getItem("pickedPlaces") || "[]");
+    if (storedIds.includes(id)) {
       return;
     }
-    localStorage.setItem(
-      "pickedPlaces",
-      JSON.stringify([
-        id,
-        ...storedIds,
-        
-      ])
-    )
+    localStorage.setItem("pickedPlaces", JSON.stringify([id, ...storedIds]));
   }
 
   function handleRemovePlace() {
@@ -69,13 +60,11 @@ function App() {
       prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
     );
     setModalIsOpen(false);
-    const storedIds=JSON.parse(localStorage.getItem("pickedPlaces")||"[]");
+    const storedIds = JSON.parse(localStorage.getItem("pickedPlaces") || "[]");
     localStorage.setItem(
       "pickedPlaces",
-      JSON.stringify(
-        storedIds.filter((id) => id !== selectedPlace.current)
-      )
-    )
+      JSON.stringify(storedIds.filter((id) => id !== selectedPlace.current))
+    );
   }
 
   return (

@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,400;10..48,700&family=Raleway:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,400;10..48,700&family=Raleway:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: 'Bricolage Grotesque', sans-serif;
+  font-family: "Bricolage Grotesque", sans-serif;
   line-height: 1.5;
 
   color: #defaf8;
@@ -43,7 +43,13 @@ header h1 {
   letter-spacing: 1rem;
 }
 
-header p {
+@media screen and (max-width: 600px) {
+  header h1 {
+    font-size: 1.4rem;
+  }
+}
+
+p {
   margin: 0 auto;
   font-size: 1.15rem;
   max-width: 38ch;
@@ -59,7 +65,7 @@ header p {
 }
 
 .places-category h2 {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1.5rem;
   margin: 0;
   padding: 0;
@@ -97,6 +103,7 @@ header p {
   border: none;
   padding: 0;
   transition: all 0.2s ease-in-out;
+  width: 90%;
 }
 
 .place-item:nth-child(odd) button:hover,
@@ -121,7 +128,7 @@ header p {
 }
 
 .place-item h3 {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: normal;
   font-size: 0.9rem;
   position: absolute;
@@ -139,7 +146,7 @@ header p {
 }
 
 #delete-confirmation h2 {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1.5rem;
   margin: 0;
   padding: 0;
@@ -148,7 +155,7 @@ header p {
 
 #delete-confirmation p {
   margin: 0 auto;
-  font-size: 1.15rem;
+  font-size: 1rem;
   max-width: 38ch;
   color: #804242;
 }
@@ -160,9 +167,21 @@ header p {
   gap: 1rem;
 }
 
+@media screen and (max-width: 600px) {
+  #delete-confirmation {
+    padding: 0.5rem;
+    width: 90vw;
+  }
+
+  #confirmation-actions {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
 .button {
   cursor: pointer;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1rem;
   padding: 0.5rem 1.5rem;
   border: none;
@@ -181,7 +200,7 @@ header p {
   background: transparent;
   border: none;
   padding: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1rem;
   color: #5d0909;
 }
@@ -197,13 +216,19 @@ header p {
 }
 
 .modal {
-  min-width: 30rem;;
+  min-width: 30rem;
   padding: 0;
   z-index: 2;
   background: #d5c7bc;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   animation: slide-down-fade-in 0.3s ease-out forwards;
+}
+
+@media screen and (max-width: 600px) {
+  .modal {
+    min-width: 15rem;
+  }
 }
 
 @keyframes slide-down-fade-in {
